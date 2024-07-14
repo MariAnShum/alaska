@@ -1,0 +1,3 @@
+Deciphered syllables:	11002
+Missing syllables:	312
+FDM:	0.97
