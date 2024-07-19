@@ -1,3 +1,0 @@
-Total words:	3224
-Key words:	1811
-LDM:	0.56
