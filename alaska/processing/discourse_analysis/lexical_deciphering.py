@@ -33,7 +33,10 @@ def fill_lexical_deciphering_report(
         key_words_counter: int,
         lexical_deciphering_report_file: Path,
 ) -> None:
-    lexical_deciphering_measure = round(key_words_counter / total_words_counter, 2)
+    try:
+        lexical_deciphering_measure = round(key_words_counter / total_words_counter, 2)
+    except ZeroDivisionError:
+        lexical_deciphering_measure = 1
     with open(lexical_deciphering_report_file, "w", encoding="utf-8") as f:
         f.write(f"Total words:\t{total_words_counter}\n")
         f.write(f"Key words:\t{key_words_counter}\n")

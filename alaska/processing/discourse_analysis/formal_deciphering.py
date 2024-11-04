@@ -89,7 +89,10 @@ def fill_formal_deciphering_report(
             encoding="utf-8",
     ) as f:
         missing_syllables = int(f.read().replace("\n", ""))
-    formal_deciphering_measure = round(deciphered_syllables / (missing_syllables + deciphered_syllables), 2)
+    try:
+        formal_deciphering_measure = round(deciphered_syllables / (missing_syllables + deciphered_syllables), 2)
+    except ZeroDivisionError:
+        formal_deciphering_measure = 1
     with open(
             formal_deciphering_report_file,
             "w",
