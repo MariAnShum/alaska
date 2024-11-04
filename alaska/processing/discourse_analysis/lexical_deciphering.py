@@ -1,7 +1,9 @@
 from pathlib import Path
+from nltk.corpus import stopwords
 
 from alaska.constants.paths import DIR_WITH_INVENTORIES
 
+FILE_WITH_STOPWORDS = DIR_WITH_INVENTORIES / "stopwords.txt"
 
 def get_lexical_deciphering_measure(
         filepath: Path,
@@ -13,13 +15,15 @@ def get_lexical_deciphering_measure(
             word = word.replace(":", "")
             counter = counter.replace("\n", "")
             frequencies_dict[word] = counter
-    with open(DIR_WITH_INVENTORIES / "stopwords.txt", "r", encoding="utf-8") as f:
-        stopwords = f.read().split()
+    with open(FILE_WITH_STOPWORDS, "r", encoding="utf-8") as f:
+        custom_stopwords = set(f.read().split())
+    custom_stopwords.union(set(stopwords.words('english')))
+    print(custom_stopwords)
     total_words_counter = 0
     key_words_counter = 0
     for key in frequencies_dict:
         total_words_counter += int(frequencies_dict[key])
-        if key not in stopwords:
+        if key not in custom_stopwords:
             key_words_counter += int(frequencies_dict[key])
     return total_words_counter, key_words_counter
 
