@@ -17,8 +17,8 @@ def get_lexical_deciphering_measure(
             frequencies_dict[word] = counter
     with open(FILE_WITH_STOPWORDS, "r", encoding="utf-8") as f:
         custom_stopwords = set(f.read().split())
-    custom_stopwords.union(set(stopwords.words('english')))
-    print(custom_stopwords)
+    default_stopwords = set(stopwords.words('english'))
+    custom_stopwords = custom_stopwords.union(default_stopwords)
     total_words_counter = 0
     key_words_counter = 0
     for key in frequencies_dict:
