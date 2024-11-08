@@ -24,6 +24,6 @@ This task is what I am concerned with in this project. This repo represents the 
 * Кибрик А. А., Бергельсон М. Б., Раскладкина М. К. Транскрибирование и социолингвистический анализ полевых и архивных данных (на материале аляскинского русского языка) : учебно-методическое пособие для студентов-практикантов. — М.: Институт языкознания РАН, 2024. — 75 с.
 
 
-# My contribution
+***My humble contribution***
 * In the manual, there is an Appendix written by me, namely number 11 "Хэндаут по работе с аляскинскими интервью" / "Handout for working with Alaskan interviews".
 * Also there is my article to be published soon: Шумилина М. Оценка качества транскриптов: специльная система для записей интервью с жителями Аляски // Сборник по итогам X конференции-школы "Проблемы языка: взгляд молоды ученых", 2024.
