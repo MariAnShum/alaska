@@ -22,8 +22,6 @@ This task is what I am concerned with in this project. This repo represents the 
 * M. Bergelson, A. Kibrik, M. Raskladkina. The language of a lost Russian region in the historical context of Russia's eastward expansion // Quaestio Rossica. 2020, Vol. 8, №3, p. 916-936.
 ## The manual
 * Кибрик А. А., Бергельсон М. Б., Раскладкина М. К. Транскрибирование и социолингвистический анализ полевых и архивных данных (на материале аляскинского русского языка) : учебно-методическое пособие для студентов-практикантов. — М.: Институт языкознания РАН, 2024. — 75 с.
-
-
-***My humble contribution***
+## My humble contribution
 * In the manual, there is an Appendix written by me, namely number 11 "Хэндаут по работе с аляскинскими интервью" / "Handout for working with Alaskan interviews".
 * Also there is my article to be published soon: Шумилина М. Оценка качества транскриптов: специльная система для записей интервью с жителями Аляски // Сборник по итогам X конференции-школы "Проблемы языка: взгляд молоды ученых", 2024.
