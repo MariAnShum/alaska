@@ -2,4 +2,4 @@ data/inventories/transcripts.txt
 data/output/transcripts_features.csv
 data/output/transcripts_scores.csv
 
-alaksa/__pycache__/.
+alaska/__pycache__
