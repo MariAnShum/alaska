@@ -1,4 +1,4 @@
-data/inventories/transcripts.txt
+data/inventories/transcripts.csv
 data/output/transcripts_features.csv
 data/output/transcripts_scores.csv
 
