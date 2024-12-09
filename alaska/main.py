@@ -1,7 +1,7 @@
-from alaska.helpers.clear_dirs import clear_output_dirs, clear_all_except_reports_in_all_dirs
-from alaska.preparers.preparers import preparers
-from alaska.processing.discourse_analysis.discourse_analysis import discourse_analysis
-from alaska.processing.alaskan_russian.alaskan_russian import alaskan_russian
+from helpers.clear_dirs import clear_output_dirs, clear_all_except_reports_in_all_dirs
+from preparers.preparers import preparers
+from processing.discourse_analysis.discourse_analysis import discourse_analysis
+from processing.alaskan_russian.alaskan_russian import alaskan_russian
 
 FLAGS = "rmall"
 

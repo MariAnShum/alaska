@@ -1,7 +1,7 @@
 from pathlib import Path
 from nltk.corpus import stopwords
 
-from alaska.constants.paths import DIR_WITH_INVENTORIES
+from constants.paths import DIR_WITH_INVENTORIES
 
 FILE_WITH_STOPWORDS = DIR_WITH_INVENTORIES / "stopwords.txt"
 

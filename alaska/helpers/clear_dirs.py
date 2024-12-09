@@ -1,6 +1,6 @@
 import pathlib
 
-from alaska.constants.paths import DIR_WITH_OUTPUT_KODIAK_FILES, DIR_WITH_OUTPUT_NINILCHIK_FILES
+from constants.paths import DIR_WITH_OUTPUT_KODIAK_FILES, DIR_WITH_OUTPUT_NINILCHIK_FILES
 
 SUPERDIRS = [
         DIR_WITH_OUTPUT_KODIAK_FILES,

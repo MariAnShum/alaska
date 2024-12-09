@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from alaska.constants.paths import (
+from constants.paths import (
     DIR_WITH_INPUT_KODIAK_FILES,
     DIR_WITH_INPUT_NINILCHIK_FILES,
     DIR_WITH_OUTPUT_KODIAK_FILES,

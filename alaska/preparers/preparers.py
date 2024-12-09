@@ -1,13 +1,13 @@
 from pathlib import Path
 
-from alaska.preparers.dir_preparer import dir_preparer
-from alaska.preparers.text_preparer import (
+from preparers.dir_preparer import dir_preparer
+from preparers.text_preparer import (
     remove_auxiliary_segments_from_file_and_count_missing_syllables,
     unify_diacritics
 )
-from alaska.preparers.get_frequencies_dict import get_frequencies_dict_with_capitals
+from preparers.get_frequencies_dict import get_frequencies_dict_with_capitals
 
-from alaska.constants.paths import (
+from constants.paths import (
     DIR_WITH_OUTPUT_KODIAK_FILES,
     DIR_WITH_OUTPUT_NINILCHIK_FILES,
 )

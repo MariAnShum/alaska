@@ -1,16 +1,16 @@
 from pathlib import Path
 
-from alaska.processing.discourse_analysis.formal_deciphering import (
+from processing.discourse_analysis.formal_deciphering import (
     get_number_of_deciphered_syllables,
     fill_formal_deciphering_report,
 )
 
-from alaska.processing.discourse_analysis.lexical_deciphering import (
+from processing.discourse_analysis.lexical_deciphering import (
     get_lexical_deciphering_measure,
     fill_lexical_deciphering_report,
 )
 
-from alaska.constants.paths import (
+from constants.paths import (
     DIR_WITH_OUTPUT_KODIAK_FILES,
     DIR_WITH_OUTPUT_NINILCHIK_FILES,
 )
