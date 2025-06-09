@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from preparers.dir_preparer import dir_preparer
+from preparers.dir_preparer import prepare_dirs
 from preparers.text_preparer import (
     remove_auxiliary_segments_from_file_and_count_missing_syllables,
     unify_diacritics
@@ -14,7 +14,7 @@ from constants.paths import (
 
 
 def preparers() -> None:
-    dir_preparer()
+    prepare_dirs()
     for dir_to_open in [
         DIR_WITH_OUTPUT_KODIAK_FILES,
         DIR_WITH_OUTPUT_NINILCHIK_FILES,

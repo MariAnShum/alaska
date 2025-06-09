@@ -14,7 +14,7 @@ DIRS_PAIRS = {
 }
 
 
-def dir_preparer() -> None:
+def prepare_dirs() -> None:
     for dirs_pair in DIRS_PAIRS.items():
         for filepath in dirs_pair[0].glob("*.txt"):
             filename = filepath.stem
@@ -46,3 +46,7 @@ def _copy_file_from_input_to_output(
     with open(output_dir / input_filepath.name, "w", encoding="utf-8") as f:
         for line in lines:
             f.write(line)
+
+
+if __name__ == "__main__":
+    prepare_dirs()
