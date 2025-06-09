@@ -3,5 +3,10 @@ data/output/transcripts_features.csv
 data/output/transcripts_scores.csv
 
 alaska/__pycache__
-alaska/helpers/__pycache__/clear_dirs.cpython-310.pyc
-alaska/helpers/__pycache__/__init__.cpython-310.pyc
+alaska/constants/__pycache__
+alaska/helpers/__pycache__
+alaska/preparers/__pycache__
+alaska/processing/__pycache__
+alaska/processing/alaskan_russian/__pycache__
+alaska/processing/discourse_analysis/__pycache__
+tests/__pycache__
