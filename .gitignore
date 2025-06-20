@@ -10,4 +10,4 @@ alaska/processing/__pycache__
 alaska/processing/alaskan_russian/__pycache__
 alaska/processing/discourse_analysis/__pycache__
 tests/__pycache__
-data/transcripts
+data/chunks
