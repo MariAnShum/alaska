@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from constants.paths import (
+from alaska.constants.paths import (
     DIR_WITH_INPUT_KODIAK_FILES,
     DIR_WITH_INPUT_NINILCHIK_FILES,
     DIR_WITH_OUTPUT_KODIAK_FILES,
@@ -12,6 +12,44 @@ DIRS_PAIRS = {
     DIR_WITH_INPUT_KODIAK_FILES: DIR_WITH_OUTPUT_KODIAK_FILES,
     DIR_WITH_INPUT_NINILCHIK_FILES: DIR_WITH_OUTPUT_NINILCHIK_FILES
 }
+
+
+class DirectoryGeneratorError(Exception):
+    pass
+
+
+class DirectoryGenerator:
+    """
+    Take address of a directory with txt-files of interviews
+    and put each interview into a separate directory named after this interview
+    (only name, without 'txt').
+    Subdirectories must be created only for txt files. If some other files, e.g. csv, are present,
+    then throw an error. If some other sub-directories are present, leave them as is
+    and give user their list.
+    Each txt file is 
+    """
+    
+    def __init__(
+        self,
+        input_directory_with_files: Path,
+        output_directory_with_directories_for_each_file: Path,
+
+    ):
+        self.input_directory_with_files = input_directory_with_files
+        self.output_directory_with_directories_for_each_file = output_directory_with_directories_for_each_file
+
+
+    def generate_directories(
+        self,
+    ):
+        
+        # Check that only txt files (and perhaps dirs) are stored in the input directory
+        input_directory_content = self.input_directory_with_files.glob("*.*")
+        input_directory_content_txt_files_only = self.input_directory_with_files.glob("*.txt")
+        if input_directory_content != input_directory_content_txt_files_only:
+            raise DirectoryGeneratorError("Input dir must contain only txt files.")
+        
+
 
 
 def prepare_dirs() -> None:
