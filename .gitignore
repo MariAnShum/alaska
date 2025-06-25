@@ -7,7 +7,17 @@ alaska/constants/__pycache__
 alaska/helpers/__pycache__
 alaska/preparers/__pycache__
 alaska/processing/__pycache__
+alaska/validators/__pycache__
 alaska/processing/alaskan_russian/__pycache__
 alaska/processing/discourse_analysis/__pycache__
+
+alaska.egg-info
+
 tests/__pycache__
+
 data/chunks
+data/chunks_for_preprocessing
+
+venv
+
+setup.py
