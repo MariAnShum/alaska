@@ -9,7 +9,7 @@ from alaska.constants.paths import (
 )
 
 
-def convert_files_from_docx_to_md(dir_with_files_to_convert = DIR_WITH_UNCONVERTED_DOCS_CHUNKS):
+def convert_files_from_docx_to_md(dir_with_files_to_convert=DIR_WITH_UNCONVERTED_DOCS_CHUNKS) -> None:
 
     files_to_convert = dir_with_files_to_convert.glob("*.docx")
     for file in files_to_convert:
@@ -17,7 +17,7 @@ def convert_files_from_docx_to_md(dir_with_files_to_convert = DIR_WITH_UNCONVERT
         convert_one_file_from_docx_to_md(file)
 
 
-def convert_one_file_from_docx_to_md(file: Path):
+def convert_one_file_from_docx_to_md(file: Path) -> None:
     filestem = file.stem
     with open(file, "rb") as docx_file:
         html_result = mammoth.convert_to_html(docx_file)
