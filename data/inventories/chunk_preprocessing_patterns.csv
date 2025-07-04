@@ -1,0 +1,23 @@
+search,replace_with,explanation,lookup_column
+&lt;,<,Translate HTML code into left angle bracket (denotes beginning of sequence of missing syllables),replica
+&gt;,>,Translate HTML code into right angle bracket (denotes end of sequence of missing syllables),replica
+\{[^\{\}]*\},,Remove marks of non-verbal signs,replica
+\([^\(\)]*\),,Remove marks of pauses,replica
+\{|\}|\(|\),,Remove single brackets that should denote non-verbal signs and pauses,replica
+\|,,Remove syntagma delimiters,replica
+:,,Remove colons after speaker codes,speaker_code
+It,Ir,Correct a frequent mistake in denoting interviewers,speaker_code
+\s+,,Remove all whitespaces,speaker_code
+\*\*,,Remove Markdown denoting of bold script (I tried to remove it before convertion but something might remain),replica
+\s+;\s+,;,Remove extra whitespaces before and after semicolons,
+\n\s+,\n,Remove extra whitespaces at the beginning of replies,speaker_code
+\s+\n,\n,Remove extra whitespaces at the end of replicas,replica
+<\D*>,,Remove angle brackets that contain information other than numbers of missing syllables (or contain nothing),replica
+\s+=+,,Remove 'hanging' equal signs,replica
+\`\s*\`,,Remove strange scare quotes that sometimes appear before speaker codes,speaker_code
+«|»|“|”|\"|„|“,,Remove quotation marks,
+",|:|;",,Remove non-final punctuation,replica
+ʼ|’|ˮ|՚|＇|‘,',Replace apostrople-like symbols with apostrophe (denotes palatalization of consonants),replica
+\n\n+,\n,Remove empty lines between replies (the final empty line must remain intact),
+\n.*;\s*\n,\n,Remove lines with empty replicas,
+\s+, ,Replace multiple whitespaces with single,
