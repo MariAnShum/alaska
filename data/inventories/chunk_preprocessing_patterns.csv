@@ -13,7 +13,12 @@ It,Ir,Correct a frequent mistake in denoting interviewers,speaker_code
 \`\s*\`,,Remove strange scare quotes that sometimes appear before speaker codes,speaker_code
 «|»|“|”|\"|„|“,,Remove quotation marks,replica
 ",|:|;",,Remove non-final punctuation,replica
+\\,,Remove escaping characters,speaker_code
+\\,,Remove escaping characters,time_code
+\\,,Remove escaping characters,replica
 ʼ|’|ˮ|՚|＇|‘,',Replace apostrople-like symbols with apostrophe (denotes palatalization of consonants),replica
+_,,Remove italics marks from speaker codes,speaker_code
+_,,Remove italics marks from time codes,time_code
 \s+, ,Replace multiple whitespaces with single,speaker_code
 \s+, ,Replace multiple whitespaces with single,time_code
 \s+, ,Replace multiple whitespaces with single,replica
