@@ -6,3 +6,4 @@ DATA_DIR = MAIN_DIR / "data"
 DIR_WITH_CHUNKS = DATA_DIR / "chunks"
 
 DIR_WITH_INVENTORIES = DATA_DIR / "inventories"
+FILE_WITH_PREPROCESSING_PATTERNS = DIR_WITH_INVENTORIES / "chunk_preprocessing_patterns.csv"

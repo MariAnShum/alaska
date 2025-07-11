@@ -1,4 +1,4 @@
-from alaska.preparers.text_preparer import lint_chunks
+from alaska.preparers.text_preparer import prepare_one_chunk
 from tests.helpers import check_existence_of_output_csv_file_and_compare_with_gold_standard
 from tests.paths import (
     GOLD_STANDARD_FILE_FOR_TESTING_TEXT_PREPARER,
@@ -7,13 +7,13 @@ from tests.paths import (
 )
 
 
-def test_lint_chunks():
+def test_prepare_one_chunk():
 
     if not OUTPUT_DIR_FOR_TESTING_TEXT_PREPARER.exists():
         OUTPUT_DIR_FOR_TESTING_TEXT_PREPARER.mkdir()
 
-    lint_chunks(
-        input_dir_with_chunks=INPUT_DIR_FOR_TESTING_TEXT_PREPARER,
+    prepare_one_chunk(
+        filepath=INPUT_DIR_FOR_TESTING_TEXT_PREPARER / "fairy_tale.csv",
         output_dir_with_chunks=OUTPUT_DIR_FOR_TESTING_TEXT_PREPARER
     )
     
@@ -22,3 +22,4 @@ def test_lint_chunks():
         gold_standard_file=GOLD_STANDARD_FILE_FOR_TESTING_TEXT_PREPARER,
         unlink_if_successful=True,
     )
+    
