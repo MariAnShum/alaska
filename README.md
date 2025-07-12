@@ -1,6 +1,6 @@
 # About
 ## The Alaskan Russian community and language
-Alaska still retains heritage of the times when it was a part of The Russian empire. Much of this heritage has to do with language, like toponyms (e.g. Ninilchik and the Pribilof Islands) and Russian-sounding surnames. However, until recently, there were also small Russian-speaking communities in Ninilchik and on Kodiak Island. Alaskan Russian is not a Russian dialect, rather it is a special variant that can be opposed to all the Eurasian variants of Russian (see Bergelson et al. 2020 for further discussion).
+Alaska still retains heritage of the times when it was a part of the Russian Empire. Much of this heritage has to do with language, like toponyms (e.g. Ninilchik and the Pribilof Islands) and Russian-sounding surnames. However, until recently, there were also small Russian-speaking communities in Ninilchik and on Kodiak Island. Alaskan Russian is not a Russian dialect, rather it is a special variant that can be opposed to all the Eurasian variants of Russian (see Bergelson et al. 2020 for further discussion).
 
 
 We are interested in full linguistic description of Alaskan Russian and in studying its sociolinguistics through the 20th century. Our main source of information is a vast collection of interviews. Many of them contain talks with Alaskan Russian speakers. Other interviewees do not speak Russian, however they often know some single words and can tell a lot about the sociolinguistic history of Alaskan Russian.
