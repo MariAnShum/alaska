@@ -83,27 +83,6 @@ def add_column_for_reply_ids_and_fill_it_in_one_chunk(
             f.write(line)
 
 
-# def make_all_stresses_and_their_vowels_united_symbols(
-#         data_from_file: str,
-# ) -> str:
-#     double_to_single = {
-#         "á": "á",
-#         "é": "é",
-#         "í": "í",
-#         "ó": "ó",
-#         "ú": "ú",
-#         "Á": "Á",
-#         "É": "É",
-#         "Í": "Í",
-#         "Ó": "Ó",
-#         "Ú": "Ú",
-#     }
-#     for key in double_to_single:
-#         data_from_file = data_from_file.replace(key, double_to_single[key])
-#     data_from_file = data_from_file.replace("̇", "")
-#     return data_from_file
-
-
 if __name__ == "__main__":
     prepare_chunks(
         input_dir_with_chunks=FIRST_DIR_WITH_KODIAK_CHUNKS,
