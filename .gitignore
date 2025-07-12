@@ -1,6 +1,5 @@
-data/inventories/transcripts.csv
-data/output/transcripts_features.csv
-data/output/transcripts_scores.csv
+.pytest_cache
+.vscode
 
 alaska/__pycache__
 alaska/constants/__pycache__
