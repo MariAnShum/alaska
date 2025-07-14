@@ -9,6 +9,17 @@ from alaska.constants.paths import (
     FIRST_DIR_WITH_KODIAK_CHUNKS,
 )
 
+"""
+This module should only be used with files converted from DOCS to MD and written as CSV tables.
+Each CSV must have right structure: before you proceed, make sure that each reply resides
+on its own line, that is no replies are 'glued' together into one line and no reply is split across
+several lines. No replicas must contain semicolons because the semicolon is being used as CSV delimiter.
+Also, before you proceed you should manually replace &lt; with <, &gt; with >, &amp; with & and &nbsp;
+with simple whitespace.
+
+The module makes some replacements in texts: it eliminates symbols that are not necessary for further
+work, 
+"""
 
 def prepare_chunks(
     input_dir_with_chunks: Path,
