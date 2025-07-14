@@ -25,6 +25,7 @@ def count_formal_deciphering_measure_in_chunks_and_write_metrics_into_result_tab
 
         write_results_into_result_table(
             chunk_filename=filepath.name,
+            collection_name=input_dir_with_chunks.name,
             fixed_syllables=fixed_syllables,
             missed_syllables=missed_syllables,
             table_filepath=output_file_for_measures,
@@ -66,6 +67,7 @@ def count_fixed_and_missed_syllables_in_one_chunk(
 
 def write_results_into_result_table(
     chunk_filename: str,
+    collection_name: str,
     fixed_syllables: int,
     missed_syllables: int,
     table_filepath=FORMAL_DECIPHERING_MEASURE_RESULTS,
@@ -90,6 +92,7 @@ def write_results_into_result_table(
     if not found_this_chunk_in_table:
         print(f"Creating row for the new file {chunk_filename}.")
         new_row = {
+            "collection_name": collection_name,
             "chunk_name": chunk_filename,
             "fixed_syllables": fixed_syllables,
             "missed_syllables": missed_syllables,
