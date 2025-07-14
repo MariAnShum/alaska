@@ -1,4 +1,3 @@
-import logging
 import re
 from pathlib import Path
 from tinybear.csv_xls import read_dicts_from_csv, write_csv
@@ -8,8 +7,6 @@ from alaska.constants.paths import (
     FORMAL_DECIPHERING_MEASURE_RESULTS,
 )
 
-
-logging.getLogger("syllable").setLevel(logging.WARNING)
 
 def count_formal_deciphering_measure_in_chunks_and_write_metrics_into_result_table(
     input_dir_with_chunks: Path,
