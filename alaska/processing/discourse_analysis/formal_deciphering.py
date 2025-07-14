@@ -50,8 +50,11 @@ def count_fixed_and_missed_syllables_in_one_chunk(
         words = replica.split()
         for word in words:
             if "<" in word:
-                number_of_missed_syllables = int(re.sub("\D", "", word))
-                missed_syllables += number_of_missed_syllables
+                try:
+                    number_of_missed_syllables = int(re.sub("\D", "", word))
+                    missed_syllables += number_of_missed_syllables
+                except ValueError:
+                    pass
                 continue
             number_of_syllables = _count_syllables_in_one_word(word)
             fixed_syllables += number_of_syllables
@@ -82,7 +85,7 @@ def write_results_into_result_table(
         print(f"Filename {chunk_filename} already exists in table. Updating metrics.")
         row["fixed_syllables"] = fixed_syllables
         row["missed_syllables"] = missed_syllables
-        row["formal_deciphering_measure"] = fixed_syllables / (fixed_syllables + missed_syllables)
+        row["formal_deciphering_measure"] = formal_deciphering_measure(fixed_syllables, missed_syllables)
     
     if not found_this_chunk_in_table:
         print(f"Creating row for the new file {chunk_filename}.")
@@ -90,44 +93,16 @@ def write_results_into_result_table(
             "chunk_name": chunk_filename,
             "fixed_syllables": fixed_syllables,
             "missed_syllables": missed_syllables,
-            "formal_deciphering_measure": fixed_syllables / (fixed_syllables + missed_syllables),
+            "formal_deciphering_measure": formal_deciphering_measure(fixed_syllables, missed_syllables),
         }
         rows_of_resulting_table.append(new_row)
 
     write_csv(
         rows=rows_of_resulting_table,
         path_to_file=table_filepath,
+        overwrite=True,
         delimiter=",",
     )
-
-
-if __name__ == "__main__":
-    count_formal_deciphering_measure_in_chunks_and_write_metrics_into_result_table(
-        input_dir_with_chunks=FIRST_DIR_WITH_KODIAK_CHUNKS,
-    )
-
-
-# def get_number_of_deciphered_syllables(
-#         filepath: Path,
-# ) -> int:
-#     with open(filepath, "r", encoding="utf-8") as f:
-#         frequencies_dict = {}
-#         for line in f:
-#             word, counter = line.split("\t")
-#             word = word.replace(":", "")
-#             counter = counter.replace("\n", "")
-#             frequencies_dict[word] = counter
-#     syllables_in_words = {}
-#     total_deciphered_counter = 0
-#     for key in frequencies_dict:
-#         syllables_in_word = _count_syl(key)
-#         syllables_in_words[key] = syllables_in_word
-#         total_deciphered_counter += syllables_in_word*int(frequencies_dict[key])
-#     syllables_in_words = sorted(syllables_in_words.items(), key=lambda x: x[1], reverse=True)
-#     with open(filepath.parent / "syllables_of_all_latin_words.txt", "w", encoding="utf-8") as f:
-#         for item in syllables_in_words:
-#             f.write(f"{item[0]}:\t{item[1]}\n")
-#     return total_deciphered_counter
 
 
 def _count_syllables_in_one_word(
@@ -151,7 +126,6 @@ def _count_syllables_in_one_word(
     word = re.sub("\W|'", "", word.lower())
 
     if word in frequent_irregular_words_in_lowercase_to_their_syllable_counts.keys():
-        print("True")
         return frequent_irregular_words_in_lowercase_to_their_syllable_counts[word]
     
     vowels = ['a', 'e', 'o', 'u', 'i', 'á', 'é', 'í', 'ó', 'ú', 'ý',
@@ -200,6 +174,44 @@ def _count_syllables_in_one_word(
             len(word) == 1 or word[-2] not in vowels):  # Окончание на Су рассматривается отдельно. Неудобно.
         syl += 1
     return syl
+
+
+def formal_deciphering_measure(
+    fixed_syllables: int,
+    missed_syllables: int,
+) -> float:
+    
+    return round(fixed_syllables / (fixed_syllables + missed_syllables), 2)
+
+
+if __name__ == "__main__":
+    count_formal_deciphering_measure_in_chunks_and_write_metrics_into_result_table(
+        input_dir_with_chunks=FIRST_DIR_WITH_KODIAK_CHUNKS,
+        output_file_for_measures=FORMAL_DECIPHERING_MEASURE_RESULTS,
+    )
+
+
+# def get_number_of_deciphered_syllables(
+#         filepath: Path,
+# ) -> int:
+#     with open(filepath, "r", encoding="utf-8") as f:
+#         frequencies_dict = {}
+#         for line in f:
+#             word, counter = line.split("\t")
+#             word = word.replace(":", "")
+#             counter = counter.replace("\n", "")
+#             frequencies_dict[word] = counter
+#     syllables_in_words = {}
+#     total_deciphered_counter = 0
+#     for key in frequencies_dict:
+#         syllables_in_word = _count_syl(key)
+#         syllables_in_words[key] = syllables_in_word
+#         total_deciphered_counter += syllables_in_word*int(frequencies_dict[key])
+#     syllables_in_words = sorted(syllables_in_words.items(), key=lambda x: x[1], reverse=True)
+#     with open(filepath.parent / "syllables_of_all_latin_words.txt", "w", encoding="utf-8") as f:
+#         for item in syllables_in_words:
+#             f.write(f"{item[0]}:\t{item[1]}\n")
+#     return total_deciphered_counter
 
 
 # def fill_formal_deciphering_report(
