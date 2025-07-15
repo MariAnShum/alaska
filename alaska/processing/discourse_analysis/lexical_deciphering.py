@@ -59,7 +59,14 @@ if __name__ == "__main__":
         for reply in replies:
             replica = reply["replica"]
 
-            words = replica.split()
+            words = replica.replace(".", "").replace("?", "").replace("!", "").replace("_", "").split()
             for word in words:
-                if re.search("\W", word) and not re.search("['<>\.\?!=а-яА-ЯёЁ]", word):
-                    print(word)
+                word = word.lower()
+                if word not in global_overall_concordance.keys():
+                    global_overall_concordance[word] = 1
+                    continue
+                global_overall_concordance[word] += 1
+            
+    ordered_concordance = dict(sorted(global_overall_concordance.items(), key=lambda item: item[1]))
+    for item in ordered_concordance.items():
+        print(item)
