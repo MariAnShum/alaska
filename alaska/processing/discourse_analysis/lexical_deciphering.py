@@ -43,30 +43,3 @@ FILE_WITH_STOPWORDS = DIR_WITH_INVENTORIES / "stopwords.txt"
 #         f.write(f"Total words:\t{total_words_counter}\n")
 #         f.write(f"Key words:\t{key_words_counter}\n")
 #         f.write(f"LDM:\t{lexical_deciphering_measure}\n")
-
-
-if __name__ == "__main__":
-    chunks = list(FIRST_DIR_WITH_KODIAK_CHUNKS.glob("*.csv"))
-
-    global_overall_concordance = {}
-
-    for chunk in chunks:
-        replies = read_dicts_from_csv(
-            path_to_file=chunk,
-            delimiter=";",
-        )
-
-        for reply in replies:
-            replica = reply["replica"]
-
-            words = replica.replace(".", "").replace("?", "").replace("!", "").replace("_", "").split()
-            for word in words:
-                word = word.lower()
-                if word not in global_overall_concordance.keys():
-                    global_overall_concordance[word] = 1
-                    continue
-                global_overall_concordance[word] += 1
-            
-    ordered_concordance = dict(sorted(global_overall_concordance.items(), key=lambda item: item[1]))
-    for item in ordered_concordance.items():
-        print(item)
