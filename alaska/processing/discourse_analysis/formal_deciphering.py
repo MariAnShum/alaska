@@ -5,6 +5,9 @@ from tinybear.csv_xls import read_dicts_from_csv, write_csv
 from alaska.constants.paths import (
     FIRST_DIR_WITH_KODIAK_CHUNKS,
     FORMAL_DECIPHERING_MEASURE_RESULTS,
+    SECOND_DIR_WITH_KODIAK_CHUNKS,
+    DIR_WITH_NINILCHIK_CHUNKS,
+    DIR_WITH_PRIBILOVS_AND_INTERIOR_CHUNKS,
 )
 
 
@@ -189,50 +192,3 @@ if __name__ == "__main__":
         input_dir_with_chunks=FIRST_DIR_WITH_KODIAK_CHUNKS,
         output_file_for_measures=FORMAL_DECIPHERING_MEASURE_RESULTS,
     )
-
-
-# def get_number_of_deciphered_syllables(
-#         filepath: Path,
-# ) -> int:
-#     with open(filepath, "r", encoding="utf-8") as f:
-#         frequencies_dict = {}
-#         for line in f:
-#             word, counter = line.split("\t")
-#             word = word.replace(":", "")
-#             counter = counter.replace("\n", "")
-#             frequencies_dict[word] = counter
-#     syllables_in_words = {}
-#     total_deciphered_counter = 0
-#     for key in frequencies_dict:
-#         syllables_in_word = _count_syl(key)
-#         syllables_in_words[key] = syllables_in_word
-#         total_deciphered_counter += syllables_in_word*int(frequencies_dict[key])
-#     syllables_in_words = sorted(syllables_in_words.items(), key=lambda x: x[1], reverse=True)
-#     with open(filepath.parent / "syllables_of_all_latin_words.txt", "w", encoding="utf-8") as f:
-#         for item in syllables_in_words:
-#             f.write(f"{item[0]}:\t{item[1]}\n")
-#     return total_deciphered_counter
-
-
-# def fill_formal_deciphering_report(
-#         deciphered_syllables: int,
-#         formal_deciphering_report_file: Path,
-# ) -> None:
-#     with open(
-#             formal_deciphering_report_file,
-#             "r",
-#             encoding="utf-8",
-#     ) as f:
-#         missing_syllables = int(f.read().replace("\n", ""))
-#     try:
-#         formal_deciphering_measure = round(deciphered_syllables / (missing_syllables + deciphered_syllables), 2)
-#     except ZeroDivisionError:
-#         formal_deciphering_measure = 1
-#     with open(
-#             formal_deciphering_report_file,
-#             "w",
-#             encoding="utf-8",
-#     ) as f:
-#         f.write(f"Deciphered syllables:\t{deciphered_syllables}\n")
-#         f.write(f"Missing syllables:\t{missing_syllables}\n")
-#         f.write(f"FDM:\t{formal_deciphering_measure}\n")
