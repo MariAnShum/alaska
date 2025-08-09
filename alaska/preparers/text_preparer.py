@@ -65,6 +65,12 @@ def remove_and_replace_extra_symbols_in_one_chunk(
     Some symbols are allowed exclusively in the rest of reply:
     1. semicolon acting as CSV delimiter,
     2. colon in timecodes.
+
+    Major and most frequent unallowed symbols are registered in
+    chunk_preprocessing_patterns.csv and are fixed automatically with this method.
+    However, any other unallowed symbols can unpredictably occur in any chunk,
+    see output of prepare_chunks for their full list. The operator must deal with them
+    manually through find-and-replace interface of VSC.
     """
     
     replies = read_dicts_from_csv(
