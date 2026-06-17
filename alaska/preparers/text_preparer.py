@@ -30,7 +30,7 @@ def prepare_chunks(
     for chunk in chunks:
 
         remove_and_replace_extra_symbols_in_one_chunk(
-            filepath=chunk,
+            path_to_chunk=chunk,
             output_dir_with_chunks=output_dir_with_chunks,
         )
         add_column_for_reply_ids_and_fill_it_in_one_chunk(
@@ -40,16 +40,24 @@ def prepare_chunks(
 
 
 def remove_and_replace_extra_symbols_in_one_chunk(
-    filepath: Path,
+    path_to_chunk: Path,
     output_dir_with_chunks: Path,
 ) -> None:
     
     """
-    Find all unallowed symbols and do to them what is right -- either remove altogether
-    or replace with allowed analogs. Correction is done on the basis of instruction
-    made as a list of pairs of replacement -- "unallowed sumbol(s) to what they must
-    be replaces with".
+    Find all unallowed symbols and do to them what is right
+    -- either remove altogether or replace with allowed analogs.
+    Correction is done on the basis of instruction made as a list
+    of pairs of replacement -- "unallowed sumbol(s) to what they must
+    be replaced with".
     Instruction is stored in inventories, in chunk_preprocessing_patterns.csv.
+
+    How this method works:
+    1. read replies from chunk,
+    2. remove all replies with empty replicas,
+    3. search all patterns from the instruction in each replica
+    and make necessary replacements,
+    4. write new replies into chunk.
 
     List of symbols allowed in replicas:
     1. basic Latin alphabet,
@@ -58,7 +66,8 @@ def remove_and_replace_extra_symbols_in_one_chunk(
     4. numbers without brackets,
     5. apostrophe ',
     6. acute for denoting stress (Unicode 0301),
-    7. final punctuation: full stop, question and exclamation marks, three dots,
+    7. final punctuation: full stop, question and exclamation marks
+    and three dots,
     8. dash in complex words and interjections such as "uh-huh",
     9. underscore _, technical mark for denoting words written in italics.
 
@@ -67,39 +76,45 @@ def remove_and_replace_extra_symbols_in_one_chunk(
     2. colon in timecodes.
 
     Major and most frequent unallowed symbols are registered in
-    chunk_preprocessing_patterns.csv and are fixed automatically with this method.
-    However, any other unallowed symbols can unpredictably occur in any chunk,
-    see output of prepare_chunks for their full list. The operator must deal with them
-    manually through find-and-replace interface of VSC.
+    chunk_preprocessing_patterns.csv and are fixed automatically
+    by this method. However, the set of unallowed symbols is incalculable,
+    that is why any other unallowed symbols can unpredictably occur in any
+    chunk. Their list is formed by list_all_unallowed_symbols_in_one_chunk.
+    The operator must deal with them manually through find-and-replace
+    interface of VSC.
     """
     
     replies = read_dicts_from_csv(
-        path_to_file=filepath,
+        path_to_file=path_to_chunk,
         delimiter=";",
     )
+    number_of_replies = len(replies)
+    name_of_chunk = path_to_chunk.name
     patterns = read_dicts_from_csv(FILE_WITH_PREPROCESSING_PATTERNS)
 
+    for reply in replies:
+        if not reply["replica"]:
+            replies.remove(reply)
+
     for pattern in patterns:
-        for i in range(len(replies)):
+        for i in range(number_of_replies):
             column_in_chunk_where_to_look_up = pattern["lookup_column"]
             replies[i][column_in_chunk_where_to_look_up] = re.sub(
                 pattern=pattern["search"],
                 repl=pattern["replace_with"],
                 string=replies[i][column_in_chunk_where_to_look_up],
                 )
-    for reply in replies:
-        if not reply["replica"]:
-            replies.remove(reply)
-    print(f"Successfully prepared replicas from file {filepath.name}")
+
+    print(f"Successfully prepared replicas from file {name_of_chunk}")
             
     write_csv(
         rows=replies,
-        path_to_file=output_dir_with_chunks / filepath.name,
+        path_to_file=output_dir_with_chunks / name_of_chunk,
         overwrite=True,
         delimiter=";",
     )
 
-    print(f"Successfully written into {output_dir_with_chunks / filepath.name}")
+    print(f"Successfully written into {output_dir_with_chunks / name_of_chunk}")
 
 
 def add_column_for_reply_ids_and_fill_it_in_one_chunk(
